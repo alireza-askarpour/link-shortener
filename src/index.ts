@@ -6,7 +6,9 @@ import express, { NextFunction, Request } from "express"
 
 import connectDB from "./config/database.config"
 import { swaggerSetup } from "./config/swagger.config"
-import { appListener, appErrorHandler } from "../src/config/app.config"
+import { appListener, appErrorHandler } from "./config/app.config"
+
+import { morganMiddleware } from "./middlewares/morgan.middleware"
 
 import allRoutes from "./routes/index.routes"
 
@@ -17,6 +19,7 @@ connectDB()
 const app = express()
 
 // middlewares
+app.use(morganMiddleware)
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
