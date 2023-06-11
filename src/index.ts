@@ -1,13 +1,16 @@
-import express, { NextFunction, Request } from "express"
-import createError from "http-errors"
-import dotenv from "dotenv"
 import cors from "cors"
+import dotenv from "dotenv"
+import createError from "http-errors"
+import express, { NextFunction, Request } from "express"
 
+import connectDB from "./config/database.config"
 import { appListener, appErrorHandler } from "../src/config/app.config"
+
 import allRoutes from "./routes/index.routes"
 
 // config
 dotenv.config()
+connectDB()
 
 const app = express()
 
