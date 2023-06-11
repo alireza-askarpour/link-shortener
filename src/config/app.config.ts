@@ -1,9 +1,6 @@
-import { Request, Response, NextFunction } from "express"
-import createHttpError from "http-errors"
-import dotenv from "dotenv"
 import chalk from "chalk"
-
-dotenv.config()
+import createHttpError from "http-errors"
+import { Request, Response, NextFunction } from "express"
 
 export const isDevelopment = process.env.NODE_ENV === "development"
 export const isProduction = process.env.NODE_ENV === "production"

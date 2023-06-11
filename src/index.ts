@@ -1,9 +1,11 @@
 import cors from "cors"
 import dotenv from "dotenv"
 import createError from "http-errors"
+import swaggerUI from "swagger-ui-express"
 import express, { NextFunction, Request } from "express"
 
 import connectDB from "./config/database.config"
+import { swaggerSetup } from "./config/swagger.config"
 import { appListener, appErrorHandler } from "../src/config/app.config"
 
 import allRoutes from "./routes/index.routes"
@@ -17,6 +19,9 @@ const app = express()
 // middlewares
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+
+// settings
+app.use("/docs", swaggerUI.serve, swaggerSetup)
 
 // auth
 app.use(cors({ origin: "*" }))
