@@ -21,3 +21,20 @@
  *              201:
  *                  description: success
  */
+
+/**
+ * @swagger
+ *  /{shortLink}:
+ *      post:
+ *          tags: [Link]
+ *          summary: redirect short link
+ *          parameters:
+ *              -   in: path
+ *                  name: shortLink
+ *                  type: string
+ *                  required: true
+ *                  description:
+ *          responses:
+ *              201:
+ *                  description: success
+ */

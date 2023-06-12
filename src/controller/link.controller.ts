@@ -30,3 +30,20 @@ export const createShortLink = catchAsync(
     })
   }
 )
+
+/**
+ * Redirect from the shortened link to the original link
+ */
+export const redirectShortLink = catchAsync(
+  async (req: Request, res: Response) => {
+    const { shortLink } = req.params
+
+    if (!shortLink) throw createError.BadRequest("INVALID_SHORT_LINK")
+
+    const short_link = `${process.env.BASE_URL}/${shortLink}`
+    const link: any = await LinkModel.findOne({ shortLink: short_link })
+    if (!link) throw createError.InternalServerError("FAILED_GET_LINK")
+
+    res.status(HttpStatus.OK).redirect(link.originalLink)
+  }
+)
