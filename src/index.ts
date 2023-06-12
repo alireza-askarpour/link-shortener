@@ -9,7 +9,6 @@ import { swaggerSetup } from "./config/swagger.config"
 import { appListener, appErrorHandler } from "./config/app.config"
 
 import { morganMiddleware } from "./middlewares/morgan.middleware"
-
 import allRoutes from "./routes/index.routes"
 
 // config
@@ -38,4 +37,5 @@ app.use((req: Request, _, next: NextFunction) => {
 })
 app.use(appErrorHandler)
 
+// listener
 app.listen(process.env.PORT, appListener)

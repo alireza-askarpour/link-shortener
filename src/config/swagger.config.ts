@@ -20,17 +20,7 @@ export const swaggerSetup = swaggerUI.setup(
           url: process.env.BASE_URL,
         },
       ],
-      components: {
-        securitySchemes: {
-          BearerAuth: {
-            type: "http",
-            scheme: "bearer",
-            bearerFormat: "JWT",
-          },
-        },
-      },
-      security: [{ BearerAuth: [] }],
     },
-    apis: ["./src/routes/swagger/*.js"],
+    apis: ["./src/routes/swagger/*.ts"],
   })
 )
