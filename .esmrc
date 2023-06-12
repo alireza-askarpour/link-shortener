@@ -1,7 +1,0 @@
-{
-  "ext": ".ts",
-  "nodeArgs": [
-    "--loader",
-    "esm"
-  ]
-}
